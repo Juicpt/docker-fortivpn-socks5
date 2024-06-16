@@ -8,6 +8,7 @@ RUN \
     autoconf automake build-base ca-certificates curl git go openssl-dev ppp && \
   # build openfortivpn
   mkdir -p /usr/src/openfortivpn && \
+  mkdir -p /run/ppp && \
   curl -sL https://github.com/adrienverge/openfortivpn/archive/${OPENFORTIVPN_VERSION}.tar.gz \
     | tar xz -C /usr/src/openfortivpn --strip-components=1 && \
   cd /usr/src/openfortivpn && \
