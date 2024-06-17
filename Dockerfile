@@ -13,7 +13,7 @@ RUN \
     | tar xz -C /usr/src/openfortivpn --strip-components=1 && \
   cd /usr/src/openfortivpn && \
   ./autogen.sh && \
-  ./configure --prefix=/usr --sysconfdir=/etc && \
+  ./configure --prefix=/usr --sysconfdir=/etc --enable-legacy-pppd && \
   make -j$(nproc) && \
   make install && \
   # build glider
