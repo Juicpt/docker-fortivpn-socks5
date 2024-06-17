@@ -1,6 +1,6 @@
 FROM alpine:3.20.0 as builder
 
-ARG OPENFORTIVPN_VERSION=v1.22.1
+ARG OPENFORTIVPN_VERSION=master
 ARG GLIDER_VERSION=v0.16.3
 
 RUN \
@@ -8,12 +8,11 @@ RUN \
     autoconf automake build-base ca-certificates curl git go openssl-dev ppp && \
   # build openfortivpn
   mkdir -p /usr/src/openfortivpn && \
-  mkdir -p /run/ppp && \
   curl -sL https://github.com/adrienverge/openfortivpn/archive/${OPENFORTIVPN_VERSION}.tar.gz \
     | tar xz -C /usr/src/openfortivpn --strip-components=1 && \
   cd /usr/src/openfortivpn && \
   ./autogen.sh && \
-  ./configure --prefix=/usr --sysconfdir=/etc --enable-legacy-pppd && \
+  ./configure --prefix=/usr --sysconfdir=/etc && \
   make -j$(nproc) && \
   make install && \
   # build glider
