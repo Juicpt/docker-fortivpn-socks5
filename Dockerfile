@@ -1,7 +1,7 @@
 FROM alpine:3.20.0 as builder
 
 ARG OPENFORTIVPN_VERSION=master
-ARG GLIDER_VERSION=v0.16.3
+ARG GLIDER_VERSION=v0.16.4
 
 RUN \
   apk add --no-cache \
