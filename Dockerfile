@@ -1,4 +1,4 @@
-FROM alpine:3.21.3 as builder
+FROM alpine:3.22.0 as builder
 
 ARG OPENFORTIVPN_VERSION=master
 ARG GLIDER_VERSION=v0.16.4
@@ -25,7 +25,7 @@ RUN \
   go build -v -ldflags "-s -w"
 COPY entrypoint.sh /usr/bin/
 
-FROM alpine:3.21.3
+FROM alpine:3.22.0
 RUN apk add --no-cache ca-certificates openssl ppp
 COPY --from=builder /usr/bin/openfortivpn /go/src/github.com/nadoo/glider/glider /usr/bin/entrypoint.sh /usr/bin/
 ENTRYPOINT ["/usr/bin/entrypoint.sh"]
